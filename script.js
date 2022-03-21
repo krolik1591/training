@@ -3,9 +3,16 @@ function Calculator(){
     x2;
     
     read(){
-        x1 = prompt('Введите число', '')
-        x2 = prompt('Ещё разок', '')
+        this.x1 = prompt('Введите число', '')
+        this.x2 = prompt('Ещё разок', '')
     }
 
+    sum(){
+        return(this.x1 + this.x2)
+    }
+
+    mul(){
+        return(thix.x1 * thix.x2)
+    }
 
 }
