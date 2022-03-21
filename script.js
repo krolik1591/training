@@ -16,3 +16,8 @@ function Calculator(){
     }
 
 }
+
+let calculator() = new Calculator()
+
+alert( 'Sum=' + calculator.sum() )
+alert( 'Mul=' + calculator.mul() )
