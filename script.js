@@ -8,7 +8,7 @@ function Accumulator(startingValue){
     }
 }
 
-let accumulator = new Accumulator()
+let accumulator = new Accumulator(1)
 
 accumulator.read()
 accumulator.read()
