@@ -2,9 +2,11 @@ function Accumulator(startingValue){
 
     this.value = +startingValue
 
+    this.num = 0
     
     this.read = function(){
-        this.value += +prompt('Увеличить на', '')
+        this.num += +prompt('Увеличить на', '')
+        this.value += this.num
     }
 }
 
