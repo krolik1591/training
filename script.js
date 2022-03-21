@@ -3,8 +3,8 @@ function Calculator(x1, x2){
     this.x2 = x2;
     
     this.read = function(){
-        this.x1 = prompt('Введите число', '')
-        this.x2 = prompt('Ещё разок', '')
+        this.x1 = +prompt('Введите число', '')
+        this.x2 = +prompt('Ещё разок', '')
     }
 
     this.sum = function(){
@@ -12,12 +12,13 @@ function Calculator(x1, x2){
     }
 
     this.mul = function(){
-        return(thix.x1 * thix.x2)
+        return(this.x1 * this.x2)
     }
 
 }
 
 let calculator = new Calculator()
+calculator.read()
 
 alert( 'Sum=' + calculator.sum() )
 alert( 'Mul=' + calculator.mul() )
