@@ -1,12 +1,11 @@
-function A(){
-    alert('Priv')
+function Calculator(){
+    x1;
+    x2;
+    
+    read(){
+        x1 = prompt('Введите число', '')
+        x2 = prompt('Ещё разок', '')
+    }
+
+
 }
-
-function B(){
-    alert('Priv')
-}
-
-let a = new A
-let b = new B
-
-alert(a==b)
