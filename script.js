@@ -1,5 +1,20 @@
-function generateNum(x, y) {
-    let a = x + y * 3 + Math.floor(y / 3)
+function main() {
+    let pizda = [swapRollSmall, swapKvadratov, transpose]
+
+    let setka = generateSetka()
+
+    for (let i = 0; i < 50; i++) {
+        let func = pizda[random3()]
+        func(setka)
+    }
+
+    printSetka(setka)
+}
+
+function generateSetkaNum(x, y) {
+    let offset3left = y * 3
+    let offset1Up = Math.floor(y / 3)
+    let a = x + offset3left + offset1Up
     return a % 9 + 1
 }
 
@@ -9,47 +24,31 @@ function generateSetka() {
     for (let y = 0; y < 9; y++) {
         let str = []
         for (let x = 0; x < 9; x++) {
-            str.push(generateNum(x, y))
+            str.push(generateSetkaNum(x, y))
         }
         setka.push(str)
     }
     return setka
 }
 
-function printSetka(setka) {
-    for (let item of setka) {
-        console.log(item.join(' '))
-    }
-}
-
-function random() {
-    return Math.floor(Math.random() * 3)
-}
-
 function swapRollSmall(setka) {
-    let kvadrat = random()
-    let ryadok = random() + kvadrat * 3
-    let ryadok1 = (ryadok + 1) % 3 + kvadrat * 3
+    let kvadrat = random3()
 
-    menyauMestami(setka, ryadok, ryadok1)
+    let r1 = random3()
+    let r2 = (r1 + 1) % 3
+
+    swap(setka, kvadrat * 3 + r1, kvadrat * 3 + r2)
 }
 
 function swapKvadratov(setka) {
-    let kvadrat = random()
-    let kvadrat1 = (kvadrat + 1) % 3
+    let kvadrat1 = random3()
+    let kvadrat2 = (kvadrat1 + 1) % 3
 
-    menyauMestami(setka, kvadrat * 3, kvadrat1 * 3)
-    menyauMestami(setka, kvadrat * 3 + 1, kvadrat1 * 3 + 1)
-    menyauMestami(setka, kvadrat * 3 + 2, kvadrat1 * 3 + 2)
+    for (let i = 0; i < 3; i++)
+        swap(setka, kvadrat1 * 3 + i, kvadrat2 * 3 + i)
 }
 
-function menyauMestami(arr, mesto1, mesto2) {
-    let x = arr[mesto1]
-    arr[mesto1] = arr[mesto2]
-    arr[mesto2] = x
-}
-
-function transPose(setka) {
+function transpose(setka) {
     let setkaOld = setka.slice()
 
     for (let y = 0; y < 9; y++) {
@@ -61,12 +60,22 @@ function transPose(setka) {
     }
 }
 
-setka1 = generateSetka()
-
-let pizda = [swapRollSmall, swapKvadratov, transPose]
-for(let i = 0; i < 50; i++){
-    let x = random()
-    pizda[x](setka1)
+function swap(arr, i1, i2) {
+    let x = arr[i1]
+    arr[i1] = arr[i2]
+    arr[i2] = x
 }
 
-printSetka(setka1)
+
+function printSetka(setka) {
+    for (let item of setka) {
+        console.log(item.join('\t'))
+    }
+}
+
+function random3() {
+    return Math.floor(Math.random() * 3)
+}
+
+
+main()
