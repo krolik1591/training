@@ -8,7 +8,7 @@ function main() {
         func(setka)
     }
 
-    printSetka(setka)
+    richPrintSetka(setka)
 }
 
 function generateSetkaNum(x, y) {
@@ -66,12 +66,6 @@ function swap(arr, i1, i2) {
     arr[i2] = x
 }
 
-
-function printSetka(setka) {
-    for (let item of setka) {
-        console.log(item.join('\t'))
-    }
-}
 
 function random3() {
     return Math.floor(Math.random() * 3)
